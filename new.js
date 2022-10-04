@@ -1,22 +1,35 @@
 let nav = 0
 
 const calendar = document.getElementById('calendar')
-const display_date = document.getElementById('display_date')
+const display_date = document.getElementById('date')
+
+const next = document.getElementById('nextPage')
+const prev = document.getElementById('prevPage')
 
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+
+//function to lad the page when it loads up
 function load(){
+
 const dt = new Date()
 const day = dt.getDate()
+
+if(nav !== 9){
+    dt.setMonth(nav)
+}
+
 const month = dt.getMonth()
 const year = dt.getFullYear()
+
+
 
 //total days in the month
 const fullMonth = new Date(year, month + 1, 0).getDate()
 
 //get month current month's full details in order to get the first day of the month
 const lastdayOfMonth = new Date(year, month, 1)
-const fullDate = lastdayOfMonth.toLocaleDateString('en-uk', {
+const fullDate = lastdayOfMonth.toLocaleDateString('en-uk',{
 weekday: 'long',
 day: 'numeric',
 month: 'numeric',
@@ -28,10 +41,13 @@ year: 'numeric'
 const currentMonth = new Date(year, month) . toLocaleDateString('en-uk', {month: 'long'})
 
 display_date.innerText = `${currentMonth} ${year}`
-console.log(currentMonth);
 
 //get previous month first day
 const firstMonthDay = weekdays.indexOf(fullDate.split(', ')[0])
+
+
+//set the calendar into an empty string before running the loop and re-rendering the calendar
+calendar.innerHTML = ''
 
 for(let i = 1; i <= firstMonthDay; i++){
     const paddingDays = document.createElement('div')
@@ -48,12 +64,25 @@ for(let i = 1; i <= fullMonth; i++){
     calendar.appendChild(days)
 }
 
-
-
-
 }
 
+function navigation(){
+
+    next.addEventListener('click', ()=>{
+        nav++
+
+        console.log(nav);
+        load()
+    })
+    prev.addEventListener('click', ()=>{
+        nav--
+        load()
+    })
+
+}
 load()
+navigation()
+
 
 /* 
 

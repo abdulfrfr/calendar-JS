@@ -15,6 +15,26 @@
     color: rgb(255, 111, 111);
     font-size: 3rem;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#prevPage{
+    color: white;
+    background-color: rgb(116, 116, 255);
+    padding: 3px 7px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+#nextPage{
+    color: white;
+    background-color: rgb(116, 116, 255);
+    padding: 3px 7px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
 #weekdays{
