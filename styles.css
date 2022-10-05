@@ -49,6 +49,14 @@
     text-align: center;
 }
 
+#days:hover{
+    background-color: rgb(149, 195, 255);
+}
+
+.bg{
+    background-color: rgb(149, 195, 255);
+}
+
 #calendar{
     display: flex;
     flex-wrap: wrap;

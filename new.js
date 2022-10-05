@@ -11,14 +11,13 @@ const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 //function to lad the page when it loads up
 function load(){
-
 const dt = new Date()
-const day = dt.getDate()
-
+//set the month if the back and next button is clicked
 if(nav !== new Date().getMonth()){
     dt.setMonth(nav)
 }
 
+const day = dt.getDate()
 const month = dt.getMonth()
 const year = dt.getFullYear()
 
@@ -38,7 +37,7 @@ year: 'numeric'
 
 
 //get the current month string
-const currentMonth = new Date(year, month) . toLocaleDateString('en-uk', {month: 'long'})
+const currentMonth = dt.toLocaleDateString('en-uk', {month: 'long'})
 
 display_date.innerText = `${currentMonth} ${year}`
 
@@ -60,6 +59,12 @@ for(let i = 1; i <= fullMonth; i++){
     days.classList.add('day')
 
     days.innerText = i
+
+    if(i === day){
+        if(currentMonth === new Date().getMonth()){
+            days.classList.add('bg')
+        }
+    }
 
     calendar.appendChild(days)
 }
