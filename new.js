@@ -1,4 +1,4 @@
-let nav = 0
+let nav = new Date().getMonth()
 
 const calendar = document.getElementById('calendar')
 const display_date = document.getElementById('date')
@@ -15,7 +15,7 @@ function load(){
 const dt = new Date()
 const day = dt.getDate()
 
-if(nav !== 9){
+if(nav !== new Date().getMonth()){
     dt.setMonth(nav)
 }
 
